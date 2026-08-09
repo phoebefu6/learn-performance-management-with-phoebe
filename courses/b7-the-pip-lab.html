@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manager session 7 · The PIP lab - learn performance management with phoebe</title>
+<link rel="stylesheet" href="../assets/style.css?v=1">
+<style>
+  .pl-shell { border: 1px solid #E5E7EB; border-radius: 16px; padding: 20px; background: #FFFFFF; box-shadow: 0 10px 30px rgba(31,41,55,.07); }
+  .pl-clabel { font: 700 12px Inter, sans-serif; color: #6B7280; text-transform: uppercase; letter-spacing: .04em; display: block; }
+  .pl-clabel.pl-warn { color: #991B1B; }
+  .pl-casebtns { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+  .pl-case { font: 700 13px Inter, sans-serif; padding: 9px 13px; border-radius: 12px; border: 1px solid #D1D5DB; background: #F9FAFB; color: #1F2937; cursor: pointer; transition: all .15s; display: flex; flex-direction: column; gap: 2px; text-align: left; }
+  .pl-case:hover { border-color: #14532D; }
+  .pl-case.pl-on { background: #14532D; color: #FFFFFF; border-color: #14532D; }
+  .pl-who { font: 500 10.5px Inter, sans-serif; opacity: .75; }
+  .pl-story { margin-top: 14px; font: 400 13.5px Inter, sans-serif; color: #374151; line-height: 1.7; background: #F9FAFB; border: 1px solid #E5E7EB; border-left: 4px solid #14532D; border-radius: 10px; padding: 12px 14px; }
+  .pl-story b { color: #1F2937; }
+  .pl-story em { color: #7C2D12; font-style: normal; font-weight: 600; }
+  .pl-meters { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 18px; }
+  .pl-meter { flex: 1; min-width: 260px; }
+  .pl-mhead { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
+  .pl-mname { font: 700 13px Inter, sans-serif; color: #1F2937; }
+  .pl-mval { font: 800 30px Inter, sans-serif; line-height: 1; color: #1F2937; font-variant-numeric: tabular-nums; }
+  .pl-mval.pl-hi { color: #14532D; }
+  .pl-mval.pl-mid { color: #C2410C; }
+  .pl-mval.pl-lo { color: #991B1B; }
+  .pl-track { height: 14px; border-radius: 999px; background: #E5E7EB; overflow: hidden; margin: 8px 0 6px; }
+  .pl-fill { display: block; height: 100%; border-radius: 999px; transition: width .35s ease; }
+  .pl-fill-rec { background: linear-gradient(90deg,#4E9F6E,#14532D); }
+  .pl-fill-def { background: linear-gradient(90deg,#E8A87C,#C2410C); }
+  .pl-mnote { font: 400 11.5px Inter, sans-serif; color: #6B7280; }
+  .pl-cols { display: flex; flex-wrap: wrap; gap: 18px; margin-top: 20px; border-top: 1px solid #E5E7EB; padding-top: 16px; }
+  .pl-col { flex: 1; min-width: 280px; }
+  .pl-levers { display: flex; flex-direction: column; gap: 7px; margin-top: 8px; }
+  .pl-lev { display: flex; gap: 10px; align-items: flex-start; text-align: left; padding: 9px 11px; border-radius: 10px; border: 1px solid #D1D5DB; background: #F9FAFB; cursor: pointer; transition: all .15s; }
+  .pl-lev:hover { border-color: #14532D; }
+  .pl-lev.pl-on { background: #ECFDF5; border-color: #14532D; }
+  .pl-lev-anti:hover { border-color: #991B1B; }
+  .pl-lev-anti.pl-on { background: #FEF2F2; border-color: #991B1B; }
+  .pl-box { width: 15px; height: 15px; border-radius: 4px; border: 1.6px solid #9CA3AF; flex: 0 0 auto; margin-top: 3px; }
+  .pl-lev.pl-on .pl-box { background: #14532D; border-color: #14532D; }
+  .pl-lev-anti.pl-on .pl-box { background: #991B1B; border-color: #991B1B; }
+  .pl-ltext { display: flex; flex-direction: column; gap: 1px; }
+  .pl-ltext b { font: 600 12.5px Inter, sans-serif; color: #1F2937; }
+  .pl-ltext span { font: 400 11px Inter, sans-serif; color: #6B7280; }
+  .pl-say { margin-top: 18px; font: 500 13.5px Inter, sans-serif; color: #374151; line-height: 1.65; background: #F9FAFB; border: 1px solid #E5E7EB; border-radius: 10px; padding: 12px 14px; }
+  .pl-say b { color: #1F2937; }
+  .pl-say.pl-good { background: #ECFDF5; border-color: #A7D8BC; }
+  .pl-say.pl-good b { color: #14532D; }
+  .pl-say.pl-alarm { background: #FEF2F2; border-color: #FCA5A5; }
+  .pl-say.pl-alarm b { color: #991B1B; }
+  .pl-say.pl-ceiling { background: #FFEDD5; border-color: #C2410C; }
+  .pl-say.pl-ceiling b { color: #7C2D12; }
+  .pl-actions { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
+  .pl-btn { font: 600 12.5px Inter, sans-serif; padding: 8px 14px; border-radius: 999px; border: 1px solid #14532D; background: #FFFFFF; color: #14532D; cursor: pointer; }
+  .pl-btn:hover { background: #ECFDF5; }
+  .pl-rail { margin-top: 14px; font: 400 12.5px Inter, sans-serif; color: #6B7280; line-height: 1.7; }
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <div class="wrap">
+    <span class="crumb"><a href="../index.html">learn-performance-management-with-phoebe</a> / Manager session 7 of 10</span>
+    <button class="btn" id="toggle-all" type="button">Expand all</button>
+    <button class="btn primary" id="zoom-toggle" type="button">Projector zoom: off</button>
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="wrap">
+    <div class="eyebrow">Learn Performance Management with Phoebe · Manager track · Session 7 of 10</div>
+    <h1>The PIP lab: <span class="accent">a genuine chance, or paperwork</span></h1>
+    <p class="sub">A performance improvement plan is asked to do two jobs at once: give someone a real, supported chance to recover, and create a record that stands up if they do not. Those two jobs are moved by different things, which is why so many plans fail at both. This session takes the plan apart and hands you a live lab: build one lever by lever and watch recovery chance and procedural defensibility climb together, then take the two shortcuts that look like efficiency and watch both collapse. The third case is the one that matters most, because no plan rescues it.</p>
+    <div class="chip-row">
+      <span class="chip level">🔴 Manager track</span>
+      <span class="chip audience">Managers: middle mgmt · team leads</span>
+      <span class="chip audience">No code · templates + worked examples</span>
+      <span class="chip time">~45 min</span>
+    </div>
+    <div class="agenda">
+      <span class="a1" style="flex:1">0-3 · Recap</span>
+      <span class="a2" style="flex:4">3-18 · Two jobs, six components</span>
+      <span class="a3" style="flex:5">18-42 · The PIP Lab, driven live</span>
+      <span class="a4" style="flex:1">42-45 · Q&amp;A</span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- ============ INTRO ============ -->
+  <section class="section" id="intro">
+    <div class="section-kicker">
+      <span class="klabel">Part 0</span>
+      <h2>Where we are</h2>
+    </div>
+    <p class="lede">Last session you learned to name the cause before choosing the intervention. This session is about the intervention managers reach for most and understand least. Be clear about the honest state of play: a great many improvement plans are written as a formality after the decision to terminate has already been made, and employment-law commentary is increasingly explicit that this is a misuse of the tool which raises rather than lowers legal risk. Disputes now turn on whether the plan's requirements were reasonable and achievable, and whether it was applied consistently to people in similar situations. So the question is not "how do I write the document". It is <strong>whether you are running a plan at all, or just a countdown with a form attached</strong> - and the lab is built to make that difference visible in two numbers.</p>
+    <div class="legend">
+      <span class="pill solid">Live - presented in session</span>
+      <span class="pill light">Self-study - read after class</span>
+      <span class="pill peach">★ Worked example (Cartwheel)</span>
+      <span class="pill inkpill">Sources covered (cited)</span>
+    </div>
+    <div class="callout win">
+      <strong>★ What you walk out with today</strong>
+      The two jobs a plan must do and why they need different work, the six components that make one genuine, the two shortcuts that wreck it, hands-on time in the lab watching a plan go from 22% to 88% recovery chance, and the case where a perfect plan still tops out at 31% - because the cause was never the person.
+    </div>
+  </section>
+
+  <!-- ============ PART 1: TWO JOBS ============ -->
+  <section class="section" id="two-jobs">
+    <div class="section-kicker">
+      <span class="klabel">Part 1 · two jobs, one document</span>
+      <h2>Recovery and defensibility are different work <span class="tag concept">6 min live</span></h2>
+    </div>
+    <p class="lede">Most managers optimise one and assume the other follows. It does not. Coaching and an honest early warning are what make recovery possible; dated evidence and a consistency check are what make the process defensible. A plan strong on one and weak on the other fails in a predictable way.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 286" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A two by two showing what happens when recovery chance and procedural defensibility are high or low: a genuine chance, a kind but undocumented plan, a paper trail nobody can recover from, and a countdown that helps nobody">
+        <style>
+          .b7jT { font: 700 13px Inter, sans-serif; fill: #1F2937; }
+          .b7jH { font: 700 12.5px Inter, sans-serif; fill: #1F2937; }
+          .b7jX { font: 400 11.5px Inter, sans-serif; fill: #4B5563; }
+          .b7jA { font: 600 11.5px Inter, sans-serif; fill: #6B7280; }
+          .b7jN { font: 600 13px Inter, sans-serif; fill: #14532D; }
+        </style>
+        <text class="b7jT" x="24" y="30">What the two meters mean together</text>
+        <text class="b7jA" x="24" y="58">recovery high</text>
+        <text class="b7jA" x="24" y="176">recovery low</text>
+        <rect x="140" y="44" width="340" height="104" rx="10" fill="#FFEDD5" stroke="#C2410C" stroke-width="1.4"/>
+        <text class="b7jH" x="160" y="70">Kind, but undocumented</text>
+        <text class="b7jX" x="160" y="92">You coached well and wrote nothing down.</text>
+        <text class="b7jX" x="160" y="112">If it works, fine. If it does not, you have</text>
+        <text class="b7jX" x="160" y="132">no defensible record and no consistency.</text>
+        <rect x="496" y="44" width="360" height="104" rx="10" fill="#ECFDF5" stroke="#14532D" stroke-width="1.4"/>
+        <text class="b7jH" x="516" y="70">A genuine chance</text>
+        <text class="b7jX" x="516" y="92">Achievable criteria, real teaching, an honest</text>
+        <text class="b7jX" x="516" y="112">warning given early, a realistic timeline, and</text>
+        <text class="b7jX" x="516" y="132">a record you would happily show anyone.</text>
+        <rect x="140" y="162" width="340" height="104" rx="10" fill="#FEF2F2" stroke="#991B1B" stroke-width="1.4"/>
+        <text class="b7jH" x="160" y="188" style="fill:#991B1B">A countdown</text>
+        <text class="b7jX" x="160" y="210">No teaching, no evidence, no early warning.</text>
+        <text class="b7jX" x="160" y="230">Helps nobody and protects nobody. This is</text>
+        <text class="b7jX" x="160" y="250">the most common plan of all.</text>
+        <rect x="496" y="162" width="360" height="104" rx="10" fill="#F9FAFB" stroke="#6B7280" stroke-width="1.4"/>
+        <text class="b7jH" x="516" y="188">A paper trail</text>
+        <text class="b7jX" x="516" y="210">Immaculate documentation, no support and</text>
+        <text class="b7jX" x="516" y="230">nothing anyone could actually achieve. Legally</text>
+        <text class="b7jX" x="516" y="250">tidier, and the person never had a chance.</text>
+        <text class="b7jA" x="200" y="282">defensibility low</text>
+        <text class="b7jA" x="560" y="282">defensibility high</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - only the top right corner is a plan; the rest are shapes of failure</figcaption>
+    </figure>
+
+    <details class="card" open>
+      <summary><span class="mode live">Live</span>Why the bottom left is the most common plan<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>The countdown quadrant is not produced by bad intent. It is produced by a manager who has avoided the conversation for months, is now anxious, and copies a template from an HR portal on a Friday afternoon. The plan then contains criteria nobody thought hard about, no teaching, and a timeline picked because it sounded standard.</p>
+        <ul>
+          <li><strong>It fails the person</strong> - they get a shock, a document, and no instruction.</li>
+          <li><strong>It fails the organisation</strong> - the record shows a plan appearing from nowhere with no prior warning, which is exactly the shape that reads as pretext later.</li>
+          <li><strong>It fails the team</strong> - colleagues watch someone go from no feedback to formal process, and quietly conclude the same could happen to them.</li>
+        </ul>
+        <p>The fix is not a better template. It is the six components in Part 2, and most of them are things you do <em>before</em> the document exists.</p>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>The Netflix alternative, and its problem<span class="mini">2 min read</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>There is a serious argument that you should not run plans at all. In <em>No Rules Rules</em>, Reed Hastings sets out Netflix's keeper test - would you fight to keep this person if they resigned tomorrow? - and argues that improvement plans rarely help anyone improve and mostly delay a firing by weeks or months. His economic point is blunt: generous severance costs roughly what you would have spent managing the person out anyway.</p>
+        <ul>
+          <li><strong>What is genuinely right about it:</strong> a plan run as a countdown is worse than an honest, well-compensated parting. If you have already decided, the humane and cheaper move is to say so and pay properly.</li>
+          <li><strong>What it is exposed to:</strong> the keeper test is a manager's judgment with no process around it, and manager judgment carries known bias - we rate people who resemble us more highly. Remove the process and you have removed the thing that catches that.</li>
+          <li><strong>What it assumes:</strong> a jurisdiction and a balance sheet that allow it. In much of the world you cannot substitute severance for a fair capability process, and a small company cannot fund four months of it.</li>
+        </ul>
+        <p>Hold both: do not run a fake plan, and do not pretend that skipping process is the same as removing bias.</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ PART 2: SIX COMPONENTS ============ -->
+  <section class="section" id="components">
+    <div class="section-kicker">
+      <span class="klabel">Part 2 · the anatomy</span>
+      <h2>Six components, and which meter each moves <span class="tag concept">5 min live</span></h2>
+    </div>
+    <p class="lede">Here is the whole design, and the thing worth memorising: they are not interchangeable. Two of them mostly buy recovery, two mostly buy defensibility, and two buy both. Miss the wrong pair and you have a plan that is kind but indefensible, or airtight and useless.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 254" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Six components of a genuine improvement plan, marked by whether each mainly buys recovery chance, mainly buys procedural defensibility, or both">
+        <style>
+          .b7cT { font: 700 13px Inter, sans-serif; fill: #1F2937; }
+          .b7cH { font: 700 12px Inter, sans-serif; fill: #1F2937; }
+          .b7cX { font: 400 11px Inter, sans-serif; fill: #6B7280; }
+          .b7cP { font: 700 10.5px Inter, sans-serif; fill: #FFFFFF; }
+          .b7cN { font: 600 13px Inter, sans-serif; fill: #7C2D12; }
+        </style>
+        <text class="b7cT" x="24" y="30">The six, and what each one buys</text>
+        <rect x="24" y="44" width="270" height="72" rx="10" fill="#ECFDF5" stroke="#14532D"/>
+        <text class="b7cH" x="40" y="68">Weekly coaching + support</text>
+        <text class="b7cX" x="40" y="88">someone teaching, not checking</text>
+        <rect x="40" y="96" width="76" height="15" rx="4" fill="#14532D"/>
+        <text class="b7cP" x="50" y="107">recovery</text>
+        <rect x="305" y="44" width="270" height="72" rx="10" fill="#ECFDF5" stroke="#14532D"/>
+        <text class="b7cH" x="321" y="68">The honest early warning</text>
+        <text class="b7cX" x="321" y="88">months before, never a surprise</text>
+        <rect x="321" y="96" width="76" height="15" rx="4" fill="#14532D"/>
+        <text class="b7cP" x="331" y="107">both, most</text>
+        <rect x="586" y="44" width="270" height="72" rx="10" fill="#ECFDF5" stroke="#14532D"/>
+        <text class="b7cH" x="602" y="68">Criteria they can meet</text>
+        <text class="b7cX" x="602" y="88">specific, measurable, achievable</text>
+        <rect x="602" y="96" width="76" height="15" rx="4" fill="#14532D"/>
+        <text class="b7cP" x="612" y="107">both</text>
+        <rect x="24" y="126" width="270" height="72" rx="10" fill="#FFEDD5" stroke="#C2410C"/>
+        <text class="b7cH" x="40" y="150">A realistic timeline</text>
+        <text class="b7cX" x="40" y="170">long enough to show a change</text>
+        <rect x="40" y="178" width="76" height="15" rx="4" fill="#C2410C"/>
+        <text class="b7cP" x="50" y="189">both</text>
+        <rect x="305" y="126" width="270" height="72" rx="10" fill="#FFEDD5" stroke="#C2410C"/>
+        <text class="b7cH" x="321" y="150">Evidence from before</text>
+        <text class="b7cX" x="321" y="170">dated examples, not a summary</text>
+        <rect x="321" y="178" width="90" height="15" rx="4" fill="#C2410C"/>
+        <text class="b7cP" x="331" y="189">defensibility</text>
+        <rect x="586" y="126" width="270" height="72" rx="10" fill="#FFEDD5" stroke="#C2410C"/>
+        <text class="b7cH" x="602" y="150">Consistency with peers</text>
+        <text class="b7cX" x="602" y="170">same bar at the same level</text>
+        <rect x="602" y="178" width="90" height="15" rx="4" fill="#C2410C"/>
+        <text class="b7cP" x="612" y="189">defensibility</text>
+        <rect x="24" y="226" width="14" height="14" rx="3" fill="#C2410C"/>
+        <text class="b7cN" x="46" y="238">Four of the six happen before the document exists. That is why late plans cannot be rescued by writing.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - which component buys recovery, which buys defensibility</figcaption>
+    </figure>
+
+    <details class="card" open>
+      <summary><span class="mode live">Live</span>The two shortcuts to never take<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Both of these are things reasonable managers do under pressure, and both are visible in the lab as an immediate collapse of both meters:</p>
+        <ul>
+          <li><strong>Shortening the timeline "to save management time."</strong> A two-week plan cannot show a change in the work. It reads as a countdown, the person spends it applying for jobs, and the first question any reviewer asks afterwards is whether the target was achievable in the time given.</li>
+          <li><strong>Writing the plan after the termination decision.</strong> This is the one that ends up in front of a lawyer or a tribunal. A plan produced as paperwork for a decision already made is a pretext, and it is precisely what gets examined - was it genuine, achievable, and applied consistently? You also destroy whatever recovery chance existed.</li>
+        </ul>
+        <p>If you have honestly already decided, the ethical route is the one in b9: say so, and part properly. Do not dress a decision up as an opportunity.</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ THE LAB ============ -->
+  <section class="section" id="lab">
+    <div class="section-kicker">
+      <span class="klabel">Demo · drive it yourself</span>
+      <h2>The PIP Lab <span class="tag demo">★ live · two meters, six levers, three cases</span></h2>
+    </div>
+    <p class="lede">Pick a case, then build the plan one component at a time and watch both meters. Start with nothing on. Then turn on all six. Then take a shortcut and watch what it costs. Finally switch to the third case with all six still on - that is the one to sit with.</p>
+
+    <div id="pip-lab"></div>
+
+    <div class="callout tip">
+      <strong>What to notice while you drive it</strong>
+      <table class="clean">
+        <thead><tr><th>Move</th><th>Recovery</th><th>Defensibility</th><th>The lesson</th></tr></thead>
+        <tbody>
+          <tr><td>Skill case, nothing on</td><td>22%</td><td>8%</td><td>A plan in name only</td></tr>
+          <tr><td>+ coaching with named support</td><td>61%</td><td>51%</td><td>Teaching is what moves recovery</td></tr>
+          <tr><td>All six components on</td><td>88%</td><td>92%</td><td>This is a real chance</td></tr>
+          <tr><td>All six, then shorten to two weeks</td><td>32%</td><td>36%</td><td>One shortcut undoes most of the work</td></tr>
+          <tr><td>All six, then write it post-decision</td><td>5%</td><td>13%</td><td>Pretext destroys both jobs at once</td></tr>
+          <tr><td>Context case, all six on</td><td><strong>31%</strong></td><td><strong>92%</strong></td><td>Perfect process, wrong cause</td></tr>
+        </tbody>
+      </table>
+      That last row is the whole session. A clean, well-documented, humane plan aimed at a cause the plan cannot address is still the wrong intervention - it just fails more tidily.
+    </div>
+  </section>
+
+  <!-- ============ WORKED EXAMPLE ============ -->
+  <section class="section" id="worked-1">
+    <div class="section-kicker">
+      <span class="klabel">Worked example</span>
+      <h2>Turn a countdown into a real plan <span class="tag demo">★ 8 min · do your own</span></h2>
+    </div>
+    <p class="lede">Here is a plan a Cartwheel manager actually drafted for the analyst whose forecasts arrive late. Read it, find which of the six components are missing, and rebuild it.</p>
+
+    <div class="steps">
+      <div class="step"><p>The draft: "Priya must improve the quality and timeliness of her forecasting work over the next 30 days. Performance will be reviewed at the end of the period."</p></div>
+      <div class="step"><p>Score it against the six. Criteria she can meet? No - "improve quality" is not measurable. Evidence from before? None cited. Coaching and support? Not mentioned. Early warning? This is the first time she hears it. Timeline? Picked, not reasoned. Consistency? Never checked.</p></div>
+      <div class="step"><p>Rebuild it with all six, and notice how much of the rebuild is not writing at all - it is arranging teaching and checking your own record.</p></div>
+      <div class="step"><p>Then ask the b6 question you should have asked first: is this actually a skill gap? If she has never been taught the forecasting method, the plan is instruction with a review date, not a warning with one.</p></div>
+    </div>
+
+    <div class="callout tip">
+      <strong>Before and after</strong>
+      <table class="clean">
+        <thead><tr><th>Component</th><th>The draft</th><th>Rebuilt</th></tr></thead>
+        <tbody>
+          <tr><td>Criteria</td><td>"improve quality and timeliness"</td><td>"Weekly forecast delivered by Tuesday 12:00, with variance under 10%, for four consecutive weeks"</td></tr>
+          <tr><td>Evidence</td><td>none</td><td>Six dated examples from the last two quarters, with what was late and what needed rework</td></tr>
+          <tr><td>Support</td><td>none</td><td>Two hours a week with the senior analyst on the forecasting method, plus a worked template</td></tr>
+          <tr><td>Early warning</td><td>this is the first she hears of it</td><td>Raised in the 1:1 in month two, in writing after, with the offer of help then</td></tr>
+          <tr><td>Timeline</td><td>30 days, unreasoned</td><td>Eight weeks - four to learn the method, four to demonstrate it independently</td></tr>
+          <tr><td>Consistency</td><td>never checked</td><td>Checked against how the same gap was handled for two other analysts at the same level</td></tr>
+        </tbody>
+      </table>
+      The rebuilt version takes more of the manager's time. That is the honest trade: a plan worth running costs the manager real hours, and a plan that costs no hours is a countdown.
+    </div>
+
+    <div class="callout example">
+      <span class="ex-pill">Real world</span>
+      <p><strong>The plan that worked, and why nobody noticed.</strong> The rebuilt version above ran at Cartwheel and Priya is now the person who trains others on the forecasting method. Nothing about that outcome looks like performance management - there was no formal drama, and the file records an eight-week plan that closed successfully. Successful plans are invisible, which is exactly why the tool has such a bad reputation: the ones everyone remembers are the countdowns, because those are the ones that end in an exit and a story.</p>
+    </div>
+  </section>
+
+  <!-- ============ HOMEWORK ============ -->
+  <section class="section" id="exercise">
+    <div class="section-kicker">
+      <span class="klabel">Homework</span>
+      <h2>Try it yourself - this week <span class="tag exercise">◐ 30-45 min total</span></h2>
+    </div>
+    <ul>
+      <li>Find any improvement plan you have written or received. Score it against the six components and place it in one of the four quadrants.</li>
+      <li>For any current concern, write the honest early warning you could give this week - the thing that means no future plan is ever a surprise.</li>
+      <li>Take a live case into the lab and be honest about which cause it is. If it is a context case, write what you would fix instead of the plan.</li>
+      <li>Check your own consistency: has a similar gap at the same level been handled the same way? If not, that is a finding about you, not the person.</li>
+      <li>Ask HR what your organisation's plan template actually requires, and which of the six it leaves out. Most templates cover evidence and criteria, and say nothing about teaching.</li>
+      <li>If you have honestly already decided, do not write a plan. Read b9 before you do anything.</li>
+    </ul>
+  </section>
+
+  <!-- ============ SOURCES ============ -->
+  <section class="section" id="official">
+    <div class="section-kicker">
+      <span class="klabel">Source material</span>
+      <h2>Sources covered (cited)</h2>
+    </div>
+    <p class="lede">Taught from employment-practice guidance and the improvement-plan literature. This session covers:</p>
+    <div class="covered">
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">Employment-law commentary on improvement plans (Burr, HR Acuity and similar practitioner sources)</span><span class="note">Parts 0-2 · the dual purpose, pretext risk, and the achievable-and-consistent test</span></div>
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">Acas, "Dismissals for capability or conduct" and the Acas Code of Practice; Singapore Tripartite Guidelines on Fair Employment Practices</span><span class="note">Part 2 · support to improve first, fair process, clear reasons</span></div>
+      <div class="covered-row"><span class="status pill light">◐</span><span class="name">Hastings &amp; Meyer, "No Rules Rules" - the keeper test and the severance argument</span><span class="note">Part 1 self-study · the alternative to plans, taught with its bias critique</span></div>
+    </div>
+    <div class="callout tip">
+      <strong>Two honesty notes on this session</strong>
+      You will find a widely-repeated claim online that "around 75% of employees put on a plan leave anyway." It traces to vendor blogs rather than research, so this course does not state it. The defensible version is the one taught above: plans are frequently written as formality before a decision already made, and that is what is being litigated. Second, the lab is a deterministic teaching model on a fictional company - it encodes what the guidance says makes a plan genuine, not an empirical prediction, and it is not legal advice. Employment law is local and fact-specific.
+    </div>
+  </section>
+
+  <!-- ============ QUIZ ============ -->
+  <section class="section" id="quiz">
+    <div class="section-kicker">
+      <span class="klabel">Check yourself</span>
+      <h2>Three questions before you go 🎯 <span class="tag exercise">◐ 90 seconds</span></h2>
+    </div>
+    <div class="quiz-q" data-answer="1">
+      <p class="qtext">1 · Which pair of components mainly buys <em>recovery</em> rather than defensibility?</p>
+      <button class="qopt" type="button">A · Dated evidence from before the plan, and a consistency check against peers</button>
+      <button class="qopt" type="button">B · Weekly coaching with named support, and the honest early warning</button>
+      <button class="qopt" type="button">C · A signed acknowledgement, and a formal review meeting</button>
+      <p class="qwhy">Teaching and honesty move recovery; evidence and consistency move defensibility. In the lab, adding coaching to the skill case takes recovery from 42% to 61%, while the consistency check barely moves recovery and takes defensibility to 92%. A plan needs both kinds of work.</p>
+    </div>
+    <div class="quiz-q" data-answer="2">
+      <p class="qtext">2 · In the lab, the context-mismatch case with all six components on reaches 31% recovery and 92% defensibility. What does that mean?</p>
+      <button class="qopt" type="button">A · The plan needs a longer timeline to work</button>
+      <button class="qopt" type="button">B · The person is not capable of the role</button>
+      <button class="qopt" type="button">C · The process is clean but aimed at the wrong cause - the fix is the role or the context, not a plan</button>
+      <p class="qwhy">You cannot improvement-plan your way out of a problem that was never the person. When the role was rewritten, the team lost people, or the manager is the issue, a defensible plan just fails more tidily. Diagnose the cause first - that is b6.</p>
+    </div>
+    <div class="quiz-q" data-answer="0">
+      <p class="qtext">3 · Why is writing the plan after deciding to terminate worse than not writing one?</p>
+      <button class="qopt" type="button">A · It is a pretext - it destroys the recovery chance and is exactly what gets examined as not genuine</button>
+      <button class="qopt" type="button">B · It takes too long to prepare properly</button>
+      <button class="qopt" type="button">C · The employee might refuse to sign it</button>
+      <p class="qwhy">A plan written as paperwork for a decision already made raises legal risk rather than reducing it: disputes turn on whether requirements were reasonable and achievable and whether it was applied consistently. In the lab it drops the skill case to 5% recovery and 13% defensibility. If you have decided, part properly instead.</p>
+    </div>
+    <p class="quiz-score"></p>
+  </section>
+
+  <!-- ============ CHEAT SHEET ============ -->
+  <section class="cheat" id="cheatsheet">
+    <h3>Manager session 7 cheat sheet <span>· pin this</span></h3>
+    <div class="grid-2">
+      <div class="cheat-item"><b>Two jobs</b><span>a genuine chance to recover, and a record that stands up. Different work, both required.</span></div>
+      <div class="cheat-item"><b>Recovery levers</b><span>weekly coaching with named support, and the honest early warning.</span></div>
+      <div class="cheat-item"><b>Defensibility levers</b><span>dated evidence from before the plan, and consistency with similar cases.</span></div>
+      <div class="cheat-item"><b>Both</b><span>criteria they can actually meet, and a timeline long enough to show a change.</span></div>
+      <div class="cheat-item"><b>Four of six happen first</b><span>before the document exists. Late plans cannot be rescued by better writing.</span></div>
+      <div class="cheat-item"><b>Never shorten it</b><span>a two-week plan is a countdown. 88/92 drops to 32/36.</span></div>
+      <div class="cheat-item"><b>Never post-decision</b><span>pretext: 5/13. If you have decided, part properly - that is b9.</span></div>
+      <div class="cheat-item"><b>Next session</b><span>b8 - the hard conversations: promotion denial, pay, and "this is not working".</span></div>
+    </div>
+  </section>
+
+  <footer class="pagefoot">
+    <span>Manager session 7 of 10 · learn-performance-management-with-phoebe · by Phoebe Fu &nbsp;·&nbsp; 📚 <a href="https://phoebefu6.github.io/learn-with-phoebe/">Learn with Phoebe ↗</a></span>
+    <span><a href="b6-diagnose-first.html">← Prev: Diagnose before you act</a> &nbsp;·&nbsp; <a href="b8-hard-conversations.html">Next: The hard conversations →</a></span>
+  </footer>
+
+</main>
+
+<script src="../assets/app.js?v=1"></script>
+<script src="../assets/pip-live.js?v=1"></script>
+</body>
+</html>

@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>learn performance management with phoebe - grow people, and part well when you must</title>
+<link rel="stylesheet" href="assets/style.css?v=1">
+<style>
+  .stats-row { display: flex; gap: 2.4rem; margin-top: 1.5rem; flex-wrap: wrap; }
+  .stat b { display: block; font-size: 2.1rem; font-weight: 800; line-height: 1.05; font-variant-numeric: tabular-nums; }
+  .stat span { font-size: .72rem; opacity: .85; text-transform: uppercase; letter-spacing: .09em; font-weight: 600; }
+
+  .course-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr)); gap: 1rem; margin-top: 1.5rem; }
+  .course-card {
+    border: 1px solid var(--hairline);
+    border-top: 4px solid var(--diff, var(--pine));
+    border-radius: var(--radius);
+    padding: 1.2rem 1.3rem 1.1rem;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    text-decoration: none;
+    color: var(--ink);
+    background: #fff;
+    transition: box-shadow .15s ease, border-color .15s ease, transform .15s ease;
+    position: relative;
+  }
+  .course-card:hover { border-color: var(--pine-soft); border-top-color: var(--diff, var(--pine)); box-shadow: 0 8px 28px rgba(20,83,45,.16); transform: translateY(-3px); }
+  .course-card .cicon { font-size: 1.7rem; line-height: 1; }
+  .course-card .cnum { font-size: .72rem; font-weight: 700; color: var(--pine); text-transform: uppercase; letter-spacing: .1em; }
+  .course-card h3 { font-size: 1.05rem; font-weight: 800; line-height: 1.3; }
+  .course-card p { font-size: .85rem; color: var(--muted); flex: 1; }
+  .course-card .meta { display: flex; gap: .4rem; flex-wrap: wrap; }
+
+  .diff-legend { display: flex; gap: 1rem; margin-top: 1.6rem; font-size: .74rem; color: var(--muted); font-weight: 600; flex-wrap: wrap; }
+  .diff-legend i { display: inline-block; width: .85rem; height: .35rem; border-radius: 999px; margin-right: .35rem; vertical-align: middle; }
+
+  .paths { margin-top: 2.6rem; }
+  .paths h2 { font-size: 1.3rem; font-weight: 800; margin-bottom: .3rem; }
+  .paths .plede { color: var(--muted); font-size: .92rem; margin-bottom: .8rem; }
+  .path { display: flex; gap: .55rem; align-items: center; padding: .75rem 0; border-bottom: .5px solid var(--hairline); flex-wrap: wrap; }
+  .path:last-child { border-bottom: none; }
+  .path b { min-width: 15.5rem; font-size: .9rem; }
+  .path .pstep { background: var(--pine-50); color: var(--pine); border-radius: 999px; padding: .16rem .68rem; font-weight: 700; font-size: .8rem; text-decoration: none; transition: all .12s ease; }
+  .path .pstep:hover { background: var(--pine); color: #fff; }
+  .path .parr { color: var(--faint); font-weight: 700; }
+
+  .mm-section { margin-top: 1.6rem; }
+  .mm-section h2 { font-size: 1.3rem; font-weight: 800; margin-bottom: .2rem; }
+  .mm-section .mm-lede { color: var(--muted); font-size: .92rem; margin-bottom: .4rem; }
+  .mm-wrap { border: 1px solid var(--hairline); border-radius: var(--radius); background: linear-gradient(180deg,#fff,#ECFDF5); padding: .6rem; overflow-x: auto; }
+  .mm-svg { width: 100%; height: auto; display: block; max-width: 60rem; margin: 0 auto; min-width: 34rem; }
+  .mm-link { cursor: pointer; text-decoration: none; }
+  .mm-node rect { transition: opacity .15s ease, filter .15s ease; }
+  .mm-node text { pointer-events: none; }
+  .mm-link:hover .mm-node rect { filter: brightness(1.06); }
+  .mm-edge { transition: opacity .15s ease; }
+
+  .rail { margin-top: 1.4rem; border: 1px solid var(--hairline); border-left: 4px solid var(--clay); border-radius: var(--radius); background: var(--clay-50); padding: 1rem 1.2rem; font-size: .9rem; }
+  .rail b { color: var(--clay-ink); }
+
+  .sib { margin-top: 1.4rem; border: 1px solid var(--hairline); border-left: 4px solid var(--pine); border-radius: var(--radius); background: var(--pine-50); padding: 1rem 1.2rem; font-size: .9rem; }
+  .sib b { color: var(--pine); }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap">
+    <div class="eyebrow">Learn Performance Management with Phoebe</div>
+    <h1>Grow people - and <span class="accent">part well</span> when you must</h1>
+    <p class="sub">Performance management is not the review form. It is the craft of ramping someone properly, coaching them every week, building a growth path they can see, and - rarely, and only after diagnosing why - running an improvement plan that is a genuine chance or ending things with dignity. This course teaches that craft end to end on an online retailer, Cartwheel: a leader track for CHROs and heads of function who design the system, and a manager track for team leads who run it. You will meet the four causes of underperformance and the four different interventions they need, the bias hiding inside the word "potential", and the two shortcuts that turn an improvement plan into a countdown. You also drive a live PIP Lab. For everyone else, it is a plain-English guide to what good management actually consists of.</p>
+    <div class="stats-row">
+      <div class="stat"><b data-count="2">2</b><span>tracks</span></div>
+      <div class="stat"><b data-count="16">16</b><span>sessions</span></div>
+      <div class="stat"><b data-count="45">45</b><span>min per session</span></div>
+      <div class="stat"><b data-count="1">1</b><span>live PIP Lab</span></div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="section">
+    <div class="paths" style="margin-top:0">
+      <h2>The leader / design track 🧭 <span style="font-size:.85rem;font-weight:600;color:var(--muted)">· for CHROs, heads of function &amp; exec · 6 x 45 min · no code, ever</span></h2>
+      <p class="plede">Thinking mode: how to build a performance system that grows people and holds up when it has to end one. What the system is for, why the manager is the system, ladders and levelling, promotion and the bias inside potential, underperformance as a design question, and the exits you choose. Each session ends with the questions to ask your organisation.</p>
+    </div>
+    <div class="course-grid">
+      <a class="course-card" href="courses/a1-what-its-for.html" style="--diff:#34D399">
+        <span class="cicon">🌱</span>
+        <span class="cnum">Leader 1 · easy</span>
+        <h3>What performance management is for</h3>
+        <p>The four-stage lifecycle, the three purposes kept apart, and an honest look at why the annual cycle failed - plus where OKRs stop and this begins.</p>
+        <span class="meta"><span class="pill amber">▶ Leaders start here</span></span>
+      </a>
+      <a class="course-card" href="courses/a2-manager-is-the-system.html" style="--diff:#34D399">
+        <span class="cicon">🧑‍🏫</span>
+        <span class="cnum">Leader 2 · easy</span>
+        <h3>The manager is the system</h3>
+        <p>Google's Project Oxygen put "is a good coach" first for a reason. What to select for, what to train, and why no framework survives a manager who will not coach.</p>
+        <span class="meta"><span class="pill light">Ten behaviours</span></span>
+      </a>
+      <a class="course-card" href="courses/a3-ladders-and-levelling.html" style="--diff:#FBBF24">
+        <span class="cicon">🪜</span>
+        <span class="cnum">Leader 3 · medium</span>
+        <h3>Career ladders and levelling</h3>
+        <p>Competency frameworks that describe observable scope rather than time served, and levelling calibration run as policy instead of as folklore.</p>
+        <span class="meta"><span class="pill light">Scope over tenure</span></span>
+      </a>
+      <a class="course-card" href="courses/a4-promotion-and-potential.html" style="--diff:#FBBF24">
+        <span class="cicon">⬆️</span>
+        <span class="cnum">Leader 4 · medium</span>
+        <h3>Promotion, and the bias inside "potential"</h3>
+        <p>Where promotion systems leak: the broken rung, the sponsorship gap, and what the 9-box grid quietly encodes when nobody defines potential.</p>
+        <span class="meta"><span class="pill light">The broken rung</span></span>
+      </a>
+      <a class="course-card" href="courses/a5-underperformance-system.html" style="--diff:#FB923C">
+        <span class="cicon">🩺</span>
+        <span class="cnum">Leader 5 · deciding</span>
+        <h3>Underperformance as a system question</h3>
+        <p>Cause taxonomy, improvement-plan policy, the Netflix keeper-test alternative and its bias problem, and your real exposure across jurisdictions.</p>
+        <span class="meta"><span class="pill light">Policy + exposure</span></span>
+      </a>
+      <a class="course-card" href="courses/a6-retention-succession-exits.html" style="--diff:#FB923C">
+        <span class="cicon">🔄</span>
+        <span class="cnum">Leader 6 · deciding</span>
+        <h3>Retention, succession, and the exits you chose</h3>
+        <p>Regretted attrition, stay interviews, key-person risk, succession that is more than a spreadsheet - and what your exits teach everyone still there.</p>
+        <span class="meta"><span class="pill light">Roadmap exercise</span></span>
+      </a>
+    </div>
+
+    <div class="paths">
+      <h2>The manager / run track 🛠️ <span style="font-size:.85rem;font-weight:600;color:var(--muted)">· for team leads &amp; middle management · 10 x 45 min · templates + worked examples</span></h2>
+      <p class="plede">One running company, Cartwheel, threaded through every demo: you run a real ramp, coach instead of fixing, build a growth plan someone opens twice, hold a career conversation against a ladder, diagnose a cause before intervening, drive the PIP Lab, and handle the three conversations everyone avoids - ending with your own team's system on a single page.</p>
+    </div>
+    <div class="course-grid">
+      <a class="course-card" href="courses/b1-foundations.html" style="--diff:#34D399">
+        <span class="cicon">🧱</span>
+        <span class="cnum">Manager 1 · easy</span>
+        <h3>Foundations</h3>
+        <p>Ramp, coach, grow, decide - the lifecycle you already run, the leverage curve, and the four causes you must name before acting.</p>
+        <span class="meta"><span class="pill amber">▶ Managers start here</span></span>
+      </a>
+      <a class="course-card" href="courses/b2-onboarding-ramp.html" style="--diff:#34D399">
+        <span class="cicon">🚀</span>
+        <span class="cnum">Manager 2 · easy</span>
+        <h3>Onboarding and ramp</h3>
+        <p>The first 90 days: ramp milestones, what "good" looks like in writing, and the early honest signal that prevents most later trouble.</p>
+        <span class="meta"><span class="pill light">Cheapest fix there is</span></span>
+      </a>
+      <a class="course-card" href="courses/b3-coaching-not-fixing.html" style="--diff:#FBBF24">
+        <span class="cicon">💬</span>
+        <span class="cnum">Manager 3 · medium</span>
+        <h3>Coaching, not fixing</h3>
+        <p>GROW, oversight matched to task-relevant maturity rather than seniority, and the real difference between coaching, feedback, mentoring and sponsorship.</p>
+        <span class="meta"><span class="pill light">GROW + TRM</span></span>
+      </a>
+      <a class="course-card" href="courses/b4-growth-plans.html" style="--diff:#FBBF24">
+        <span class="cicon">📈</span>
+        <span class="cnum">Manager 4 · medium</span>
+        <h3>Growth plans people actually use</h3>
+        <p>A skills matrix, exactly one growth goal, and a stretch assignment designed so the person can fail safely and still learn.</p>
+        <span class="meta"><span class="pill light">One goal, not five</span></span>
+      </a>
+      <a class="course-card" href="courses/b5-career-conversation.html" style="--diff:#FBBF24">
+        <span class="cicon">🗺️</span>
+        <span class="cnum">Manager 5 · medium</span>
+        <h3>The career conversation and the ladder</h3>
+        <p>Turning a ladder into behaviour you can observe, saying "not yet" with an actual route attached, and building promotion evidence over months.</p>
+        <span class="meta"><span class="pill light">"Not yet" + a route</span></span>
+      </a>
+      <a class="course-card" href="courses/b6-diagnose-first.html" style="--diff:#FB923C">
+        <span class="cicon">🔍</span>
+        <span class="cnum">Manager 6 · hands-on</span>
+        <h3>Diagnose before you act</h3>
+        <p>Will, skill, fit, context - the four causes, the wrong intervention for each, and how to tell which one you are actually looking at.</p>
+        <span class="meta"><span class="pill light">Four causes</span></span>
+      </a>
+      <a class="course-card" href="courses/b7-the-pip-lab.html" style="--diff:#F87171">
+        <span class="cicon">⚖️</span>
+        <span class="cnum">Manager 7 · hardest</span>
+        <h3>The PIP lab</h3>
+        <p>Build an improvement plan lever by lever in a live lab and watch recovery chance and defensibility climb together - then watch two shortcuts destroy both.</p>
+        <span class="meta"><span class="pill light">★ interactive: PIP Lab</span></span>
+      </a>
+      <a class="course-card" href="courses/b8-hard-conversations.html" style="--diff:#FB923C">
+        <span class="cicon">🗣️</span>
+        <span class="cnum">Manager 8 · hands-on</span>
+        <h3>The hard conversations</h3>
+        <p>Promotion denial, pay, and "this is not working" - what to say, what never to say, and why the process shapes fairness as much as the answer does.</p>
+        <span class="meta"><span class="pill light">Three scripts</span></span>
+      </a>
+      <a class="course-card" href="courses/b9-managed-exits.html" style="--diff:#FB923C">
+        <span class="cicon">🚪</span>
+        <span class="cnum">Manager 9 · hands-on</span>
+        <h3>Managed exits, done with dignity</h3>
+        <p>Documentation, fair process across jurisdictions, the conversation itself, and the team the next morning - who are watching very closely.</p>
+        <span class="meta"><span class="pill light">Process + dignity</span></span>
+      </a>
+      <a class="course-card" href="courses/b10-your-system.html" style="--diff:#F87171">
+        <span class="cicon">🏛️</span>
+        <span class="cnum">Manager 10 · hardest</span>
+        <h3>Your team's system on one page</h3>
+        <p>The capstone: ramp, coaching cadence, growth plans, ladder, escalation path and exit route - assembled, then deliberately attacked.</p>
+        <span class="meta"><span class="pill light">Capstone</span></span>
+      </a>
+    </div>
+    <div class="diff-legend">
+      <span><i style="background:#34D399"></i>easy - everyone</span>
+      <span><i style="background:#FBBF24"></i>medium</span>
+      <span><i style="background:#FB923C"></i>hands-on / deciding</span>
+      <span><i style="background:#F87171"></i>hardest</span>
+    </div>
+
+    <div class="rail">
+      <b>An honest note on managing people:</b> most underperformance is diagnosed wrong, and the wrong intervention costs months and sometimes a person. Skill needs teaching, will needs a real conversation, fit needs a different role, and context needs the context fixed - only one of those four is what an improvement plan is built for. This course teaches from the management canon (Grove, Project Oxygen, GROW, Buckingham and Goodall) and from published employment-practice guidance (Acas in the UK, the Tripartite Guidelines in Singapore). Cartwheel is a fictional teaching company and its people are invented. The PIP Lab is a deterministic teaching model, not a prediction engine. Regulations and codes are summarised for awareness and dated, <b>not legal advice</b> - employment law is local and fact-specific, so consult counsel before acting on a real case. And one figure you will not find here: the popular claim that "75% of people on a PIP leave anyway" traces to vendor blogs rather than research, so we do not repeat it.
+    </div>
+
+    <div class="sib">
+      <b>Its sibling course:</b> this one is deliberately the people half of a pair. <a href="https://phoebefu6.github.io/learn-okr-with-phoebe/">Learn OKRs with Phoebe ↗</a> owns the measurement half - writing goals, designing fair metrics, rater bias and calibration mechanics, monitoring cadence, and diagnosing broken metrics - on the same fictional company, Cartwheel. Where this course needs a goal or a metric, it sends you there rather than repeating it.
+    </div>
+
+    <div class="paths">
+      <h2>Choose your path 🗺️</h2>
+      <p class="plede">Two doors, one course. Leaders design the system; managers run it - and both meet at the PIP Lab. Employees are welcome to read either as knowledge-sharing.</p>
+      <div class="path"><b>🧭 Leader / design (no code)</b>
+        <a class="pstep" href="courses/a1-what-its-for.html">a1</a><span class="parr">→</span>
+        <a class="pstep" href="courses/a2-manager-is-the-system.html">a2</a><span class="parr">→</span>
+        <a class="pstep" href="courses/a3-ladders-and-levelling.html">a3</a><span class="parr">→</span>
+        <a class="pstep" href="courses/a4-promotion-and-potential.html">a4</a><span class="parr">→</span>
+        <a class="pstep" href="courses/a5-underperformance-system.html">a5</a><span class="parr">→</span>
+        <a class="pstep" href="courses/a6-retention-succession-exits.html">a6</a>
+      </div>
+      <div class="path"><b>🛠️ Manager / run (templates)</b>
+        <a class="pstep" href="courses/b1-foundations.html">b1</a><span class="parr">→</span>
+        <a class="pstep" href="courses/b2-onboarding-ramp.html">b2</a><span class="parr">→</span>
+        <a class="pstep" href="courses/b3-coaching-not-fixing.html">b3</a><span class="parr">→</span>
+        <a class="pstep" href="courses/b4-growth-plans.html">b4</a><span class="parr">→</span>
+        <a class="pstep" href="courses/b5-career-conversation.html">b5</a><span class="parr">→</span>
+        <a class="pstep" href="courses/b6-diagnose-first.html">b6</a><span class="parr">→</span>
+        <a class="pstep" href="courses/b7-the-pip-lab.html">b7</a><span class="parr">→</span>
+        <a class="pstep" href="courses/b8-hard-conversations.html">b8</a><span class="parr">→</span>
+        <a class="pstep" href="courses/b9-managed-exits.html">b9</a><span class="parr">→</span>
+        <a class="pstep" href="courses/b10-your-system.html">b10</a>
+      </div>
+      <div class="path"><b>🚑 In it right now (a triage path)</b>
+        <a class="pstep" href="courses/b6-diagnose-first.html">b6</a><span class="parr">→</span>
+        <a class="pstep" href="courses/b7-the-pip-lab.html">b7</a><span class="parr">→</span>
+        <a class="pstep" href="courses/b8-hard-conversations.html">b8</a><span class="parr">→</span>
+        <a class="pstep" href="courses/b9-managed-exits.html">b9</a>
+      </div>
+      <div class="path"><b>🌱 Curious employee (a taste)</b>
+        <a class="pstep" href="courses/a1-what-its-for.html">a1</a><span class="parr">→</span>
+        <a class="pstep" href="courses/b3-coaching-not-fixing.html">b3</a><span class="parr">→</span>
+        <a class="pstep" href="courses/b5-career-conversation.html">b5</a>
+      </div>
+      <div class="path"><b>🚀 Full journey (design AND run)</b>
+        <a class="pstep" href="courses/a1-what-its-for.html">a1-a6</a><span class="parr">→</span>
+        <a class="pstep" href="courses/b1-foundations.html">b1-b10</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section mm-section">
+    <h2>The knowledge map 🧠</h2>
+    <p class="mm-lede">Both tracks at a glance - hover a session to spotlight its concepts, click any node to jump in.</p>
+    <div class="mm-wrap"><div id="mindmap"></div></div>
+  </section>
+
+  <footer class="pagefoot">
+    <span>learn-performance-management-with-phoebe · by Phoebe Fu &nbsp;·&nbsp; 📚 <a href="https://phoebefu6.github.io/learn-with-phoebe/">Learn with Phoebe ↗</a> · sources: Grove · Google Project Oxygen · Whitmore (GROW) · Buckingham &amp; Goodall · McKinsey &amp; LeanIn, Women in the Workplace · Hastings &amp; Meyer · Acas · Singapore Tripartite Guidelines · Greenberg · Edmondson</span>
+  </footer>
+</main>
+
+<script>
+window.MINDMAP_DATA = {
+  title: "Grow\nPeople\nWell",
+  centerColor: "#052E16",
+  sessions: [
+    { label: "What it is\nfor", href: "courses/a1-what-its-for.html", color: "#34D399",
+      concepts: [
+        { label: "The lifecycle", href: "courses/a1-what-its-for.html" },
+        { label: "Three purposes", href: "courses/a1-what-its-for.html" } ] },
+    { label: "The manager\nis the system", href: "courses/a2-manager-is-the-system.html", color: "#34D399",
+      concepts: [
+        { label: "Project Oxygen", href: "courses/a2-manager-is-the-system.html" },
+        { label: "Coach first", href: "courses/a2-manager-is-the-system.html" } ] },
+    { label: "Ladders +\nlevelling", href: "courses/a3-ladders-and-levelling.html", color: "#FBBF24",
+      concepts: [
+        { label: "Scope over tenure", href: "courses/a3-ladders-and-levelling.html" },
+        { label: "Levelling policy", href: "courses/a3-ladders-and-levelling.html" } ] },
+    { label: "Promotion +\npotential", href: "courses/a4-promotion-and-potential.html", color: "#FBBF24",
+      concepts: [
+        { label: "The broken rung", href: "courses/a4-promotion-and-potential.html" },
+        { label: "Sponsorship gap", href: "courses/a4-promotion-and-potential.html" },
+        { label: "9-box critique", href: "courses/a4-promotion-and-potential.html" } ] },
+    { label: "Underperformance\nas a system", href: "courses/a5-underperformance-system.html", color: "#FB923C",
+      concepts: [
+        { label: "Plan policy", href: "courses/a5-underperformance-system.html" },
+        { label: "Keeper test", href: "courses/a5-underperformance-system.html" },
+        { label: "Jurisdictions", href: "courses/a5-underperformance-system.html" } ] },
+    { label: "Retention +\nsuccession", href: "courses/a6-retention-succession-exits.html", color: "#FB923C",
+      concepts: [
+        { label: "Regretted attrition", href: "courses/a6-retention-succession-exits.html" },
+        { label: "Stay interviews", href: "courses/a6-retention-succession-exits.html" } ] },
+    { label: "Foundations", href: "courses/b1-foundations.html", color: "#34D399",
+      concepts: [
+        { label: "Ramp coach grow decide", href: "courses/b1-foundations.html" },
+        { label: "Leverage curve", href: "courses/b1-foundations.html" },
+        { label: "Four causes", href: "courses/b1-foundations.html" } ] },
+    { label: "Onboarding\n+ ramp", href: "courses/b2-onboarding-ramp.html", color: "#34D399",
+      concepts: [
+        { label: "First 90 days", href: "courses/b2-onboarding-ramp.html" },
+        { label: "Early honest signal", href: "courses/b2-onboarding-ramp.html" } ] },
+    { label: "Coaching,\nnot fixing", href: "courses/b3-coaching-not-fixing.html", color: "#FBBF24",
+      concepts: [
+        { label: "GROW", href: "courses/b3-coaching-not-fixing.html" },
+        { label: "Task-relevant maturity", href: "courses/b3-coaching-not-fixing.html" },
+        { label: "Mentor vs sponsor", href: "courses/b3-coaching-not-fixing.html" } ] },
+    { label: "Growth\nplans", href: "courses/b4-growth-plans.html", color: "#FBBF24",
+      concepts: [
+        { label: "Skills matrix", href: "courses/b4-growth-plans.html" },
+        { label: "Stretch design", href: "courses/b4-growth-plans.html" } ] },
+    { label: "Career\nconversation", href: "courses/b5-career-conversation.html", color: "#FBBF24",
+      concepts: [
+        { label: "Ladder to behaviour", href: "courses/b5-career-conversation.html" },
+        { label: "\"Not yet\" + a route", href: "courses/b5-career-conversation.html" } ] },
+    { label: "Diagnose\nfirst", href: "courses/b6-diagnose-first.html", color: "#FB923C",
+      concepts: [
+        { label: "Will skill fit context", href: "courses/b6-diagnose-first.html" },
+        { label: "Wrong intervention", href: "courses/b6-diagnose-first.html" } ] },
+    { label: "The PIP\nLab", href: "courses/b7-the-pip-lab.html", color: "#F87171",
+      concepts: [
+        { label: "Recovery vs defensibility", href: "courses/b7-the-pip-lab.html" },
+        { label: "Six components", href: "courses/b7-the-pip-lab.html" },
+        { label: "Two shortcuts", href: "courses/b7-the-pip-lab.html" } ] },
+    { label: "Hard\nconversations", href: "courses/b8-hard-conversations.html", color: "#FB923C",
+      concepts: [
+        { label: "Promotion denial", href: "courses/b8-hard-conversations.html" },
+        { label: "Procedural justice", href: "courses/b8-hard-conversations.html" } ] },
+    { label: "Managed\nexits", href: "courses/b9-managed-exits.html", color: "#FB923C",
+      concepts: [
+        { label: "Fair process", href: "courses/b9-managed-exits.html" },
+        { label: "The team after", href: "courses/b9-managed-exits.html" } ] },
+    { label: "Your system\non a page", href: "courses/b10-your-system.html", color: "#F87171",
+      concepts: [
+        { label: "Assemble it", href: "courses/b10-your-system.html" },
+        { label: "Red-team it", href: "courses/b10-your-system.html" } ] }
+  ]
+};
+</script>
+<script src="assets/mindmap.js?v=1"></script>
+<script src="assets/app.js?v=1"></script>
+</body>
+</html>

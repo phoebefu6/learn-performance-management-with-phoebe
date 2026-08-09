@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manager session 2 · Onboarding and ramp - learn performance management with phoebe</title>
+<link rel="stylesheet" href="../assets/style.css?v=1">
+</head>
+<body>
+
+<div class="toolbar">
+  <div class="wrap">
+    <span class="crumb"><a href="../index.html">learn-performance-management-with-phoebe</a> / Manager session 2 of 10</span>
+    <button class="btn" id="toggle-all" type="button">Expand all</button>
+    <button class="btn primary" id="zoom-toggle" type="button">Projector zoom: off</button>
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="wrap">
+    <div class="eyebrow">Learn Performance Management with Phoebe · Manager track · Session 2 of 10</div>
+    <h1>Onboarding and ramp: <span class="accent">the cheapest fix there is</span></h1>
+    <p class="sub">Everything you will learn in the harder sessions later - diagnosis, improvement plans, exits - is expensive precisely because it happens late. The first ninety days is where the same problems cost almost nothing to solve, because expectations have not set, nobody is defending a position, and the new person is actively asking to be told how things work. This session builds a ramp you can reuse for every joiner: what "good" looks like written down before they start, milestones at 30, 60 and 90 days, and the small honest signal in week three that prevents most of what comes later.</p>
+    <div class="chip-row">
+      <span class="chip level">🟢 Manager track</span>
+      <span class="chip audience">Managers: middle mgmt · team leads</span>
+      <span class="chip audience">No code · templates + worked examples</span>
+      <span class="chip time">~45 min</span>
+    </div>
+    <div class="agenda">
+      <span class="a1" style="flex:1">0-3 · Recap</span>
+      <span class="a2" style="flex:4">3-18 · The written bar + the 30/60/90</span>
+      <span class="a3" style="flex:5">18-42 · Worked: build a ramp, say the early thing</span>
+      <span class="a4" style="flex:1">42-45 · Q&amp;A</span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- ============ INTRO ============ -->
+  <section class="section" id="intro">
+    <div class="section-kicker">
+      <span class="klabel">Part 0</span>
+      <h2>Where we are</h2>
+    </div>
+    <p class="lede">Last session's leverage curve made an economic argument: the same issue costs a short conversation in week three and an improvement plan in month nine. This session is about actually being in week three with something useful to say. Two ideas do the work. First, <strong>a new person cannot meet a standard nobody has written down</strong> - and most ramp failures are not capability failures, they are undocumented-expectation failures. Second, <strong>the first ninety days is the only period when feedback is socially free</strong>. Nobody is offended by being told how things work here in week two. Say the same thing in month eight and it lands as criticism, because by then they reasonably assume they are doing it right.</p>
+    <div class="legend">
+      <span class="pill solid">Live - presented in session</span>
+      <span class="pill light">Self-study - read after class</span>
+      <span class="pill peach">★ Worked example (Cartwheel)</span>
+      <span class="pill inkpill">Sources covered (cited)</span>
+    </div>
+    <div class="callout win">
+      <strong>★ What you walk out with today</strong>
+      A written bar for one role on your own team, a 30/60/90 ramp with observable milestones rather than activities, the week-three sentence that keeps feedback cheap, and a reusable template you will apply to every future joiner.
+    </div>
+  </section>
+
+  <!-- ============ PART 1: THE WRITTEN BAR ============ -->
+  <section class="section" id="bar">
+    <div class="section-kicker">
+      <span class="klabel">Part 1 · write it down first</span>
+      <h2>The 30, 60 and 90 day milestones <span class="tag concept">7 min live</span></h2>
+    </div>
+    <p class="lede">A ramp plan made of activities - "meet the team", "read the docs", "complete training" - measures attendance. A ramp plan made of observable milestones measures whether the person is becoming useful, which is the only thing either of you actually cares about.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 264" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A ninety day ramp with observable milestones at thirty, sixty and ninety days, contrasted with an activity-based ramp that only measures attendance">
+        <style>
+          .b2bT { font: 700 13px Inter, sans-serif; fill: #1F2937; }
+          .b2bW { font: 700 12.5px Inter, sans-serif; fill: #FFFFFF; }
+          .b2bX { font: 400 11.5px Inter, sans-serif; fill: #D1FAE5; }
+          .b2bH { font: 700 12px Inter, sans-serif; fill: #991B1B; }
+          .b2bB { font: 400 11.5px Inter, sans-serif; fill: #6B7280; }
+          .b2bN { font: 600 13px Inter, sans-serif; fill: #14532D; }
+        </style>
+        <text class="b2bT" x="24" y="30">Milestones you can observe</text>
+        <rect x="24" y="42" width="270" height="98" rx="10" fill="#A7D8BC"/>
+        <text class="b2bW" x="42" y="66" style="fill:#052E16">Day 30 · oriented</text>
+        <text class="b2bX" x="42" y="88" style="fill:#14532D">Has shipped one small real thing.</text>
+        <text class="b2bX" x="42" y="108" style="fill:#14532D">Knows who to ask for what.</text>
+        <text class="b2bX" x="42" y="128" style="fill:#14532D">Can explain what the team is for.</text>
+        <rect x="305" y="42" width="270" height="98" rx="10" fill="#4E9F6E"/>
+        <text class="b2bW" x="323" y="66">Day 60 · contributing</text>
+        <text class="b2bX" x="323" y="88">Owns a recurring piece of work.</text>
+        <text class="b2bX" x="323" y="108">Needs review, not instruction.</text>
+        <text class="b2bX" x="323" y="128">Has raised one problem unprompted.</text>
+        <rect x="586" y="42" width="270" height="98" rx="10" fill="#14532D"/>
+        <text class="b2bW" x="604" y="66">Day 90 · independent</text>
+        <text class="b2bX" x="604" y="88">Delivers the core job unsupervised.</text>
+        <text class="b2bX" x="604" y="108">Others go to them for something.</text>
+        <text class="b2bX" x="604" y="128">You would hire them again.</text>
+        <rect x="24" y="160" width="832" height="66" rx="10" fill="#FEF2F2" stroke="#991B1B" stroke-width="1.4"/>
+        <text class="b2bH" x="44" y="184">The version that teaches you nothing</text>
+        <text class="b2bB" x="44" y="206">"Week 1: meet the team. Week 2: complete compliance training. Week 4: read the handbook."</text>
+        <text class="b2bB" x="44" y="222">All completable by a person who will never be able to do the job. Attendance is not ramp.</text>
+        <rect x="24" y="244" width="14" height="14" rx="3" fill="#14532D"/>
+        <text class="b2bN" x="46" y="256">Write the milestones before they start, and give them the document on day one.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - observable milestones, not an activity checklist</figcaption>
+    </figure>
+
+    <details class="card" open>
+      <summary><span class="mode live">Live</span>Give them the document, and the map of who is who<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Two things to hand over in week one that most managers keep in their heads:</p>
+        <ul>
+          <li><strong>The ramp document itself.</strong> A new person who can see the 90-day milestones will self-correct against them, which converts your standard into their checklist. Withholding it means they have to guess what you want and then be judged on the guess.</li>
+          <li><strong>The informal map.</strong> Not the org chart - who actually knows how things work, who to ask when something breaks, whose approval matters in practice, which meetings are real. New people burn months discovering this, and the ones who never get it look slow when they are only uninformed.</li>
+        </ul>
+        <p>Then set a standing weekly slot for the whole first quarter. High task-relevant maturity earns lighter oversight later, as b3 covers; a new joiner has none, by definition, however senior they are.</p>
+        <div class="callout example">
+          <span class="ex-pill">Real world</span>
+          <p><strong>The senior hire who was left alone.</strong> Cartwheel hired an experienced buyer from a larger retailer and gave her a light ramp, on the reasonable grounds that she had done the job for a decade. She had - somewhere with different systems, a different margin structure and different supplier relationships. Four months in she was visibly struggling and had been too senior to admit she did not know how anything worked. Seniority is maturity <em>at a task</em>. Her task was new, so her maturity was low, and she needed more ramp than the graduate, not less.</p>
+        </div>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ PART 2: THE EARLY SIGNAL ============ -->
+  <section class="section" id="signal">
+    <div class="section-kicker">
+      <span class="klabel">Part 2 · the free window</span>
+      <h2>Feedback is socially free for about twelve weeks <span class="tag concept">5 min live</span></h2>
+    </div>
+    <p class="lede">There is a window at the start of a job when almost any correction is welcome, because the person expects to be learning. It closes, and once it does the same sentence costs far more to say and lands far worse.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A window in the first twelve weeks where corrective feedback is received as onboarding, after which the same feedback is received as criticism, with the cost rising steeply over the first year">
+        <style>
+          .b2sT { font: 700 13px Inter, sans-serif; fill: #1F2937; }
+          .b2sL { font: 600 11.5px Inter, sans-serif; fill: #4B5563; }
+          .b2sQ { font: 400 11.5px Inter, sans-serif; fill: #FFFFFF; }
+          .b2sA { font: 400 11px Inter, sans-serif; fill: #6B7280; }
+          .b2sN { font: 600 13px Inter, sans-serif; fill: #7C2D12; }
+        </style>
+        <text class="b2sT" x="24" y="30">The same sentence, said at three different times</text>
+        <rect x="24" y="44" width="252" height="76" rx="10" fill="#14532D"/>
+        <text class="b2sL" x="42" y="66" style="fill:#A7D8BC">Week 3</text>
+        <text class="b2sQ" x="42" y="88">"Here we always flag a</text>
+        <text class="b2sQ" x="42" y="106">delay before the deadline."</text>
+        <text class="b2sA" x="42" y="140">Heard as: onboarding.</text>
+        <text class="b2sA" x="42" y="158">Cost: nothing.</text>
+        <rect x="290" y="44" width="252" height="76" rx="10" fill="#C2410C"/>
+        <text class="b2sL" x="308" y="66" style="fill:#FFEDD5">Month 6</text>
+        <text class="b2sQ" x="308" y="88">"Here we always flag a</text>
+        <text class="b2sQ" x="308" y="106">delay before the deadline."</text>
+        <text class="b2sA" x="308" y="140">Heard as: criticism.</text>
+        <text class="b2sA" x="308" y="158">Cost: a difficult conversation.</text>
+        <rect x="556" y="44" width="300" height="76" rx="10" fill="#991B1B"/>
+        <text class="b2sL" x="574" y="66" style="fill:#FCA5A5">Month 12</text>
+        <text class="b2sQ" x="574" y="88">"Here we always flag a</text>
+        <text class="b2sQ" x="574" y="106">delay before the deadline."</text>
+        <text class="b2sA" x="574" y="140">Heard as: building a case.</text>
+        <text class="b2sA" x="574" y="158">Cost: a formal process.</text>
+        <rect x="24" y="180" width="832" height="34" rx="8" fill="#ECFDF5" stroke="#14532D" stroke-width="1.4"/>
+        <text class="b2sN" x="44" y="202" style="fill:#14532D">Nothing about the sentence changed. Only how long you waited to say it.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - the identical correction, at three prices</figcaption>
+    </figure>
+
+    <details class="card" open>
+      <summary><span class="mode live">Live</span>How to use the window without being oppressive<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>The instinct that stops managers using the free window is a good one - nobody wants to nitpick a nervous new joiner. Two things resolve it:</p>
+        <ul>
+          <li><strong>Name the frame out loud in week one.</strong> "For the first three months I am going to tell you small things as they come up, because that is much easier than saving them. Please do the same to me." Now every correction is a fulfilled promise rather than a surprise.</li>
+          <li><strong>Keep it to how-things-work, not judgment.</strong> "We flag delays early here" is a norm. "You are not proactive enough" is a verdict, and it is also the vague personality language the sibling OKR course shows lands unevenly across different people.</li>
+        </ul>
+        <p>Then, at day 90, do a real checkpoint rather than letting it drift: what is working, what is not yet, and what changes in the next quarter. If a joiner is genuinely off track at day 90, that is the moment to say so plainly - it is still cheap, and it is still recoverable.</p>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>When the ramp is failing and it is not the person<span class="mini">2 min read</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Before concluding a slow ramp is a hiring mistake, rule out the four things that are yours:</p>
+        <ul>
+          <li><strong>The role changed between the job description and their arrival.</strong> Extremely common after a reorg, and it means you hired for one job and handed over another.</li>
+          <li><strong>Nobody has time to teach them.</strong> A ramp assumes an available teacher. In a peak period, that teacher does not exist and the joiner is left to infer everything.</li>
+          <li><strong>The work is not available yet.</strong> Access, permissions, tools, or a project that has not started. People cannot ramp on work they cannot reach, and they will absorb the delay as their own failure.</li>
+          <li><strong>There is no written standard</strong>, so they are optimising for whatever you last mentioned.</li>
+        </ul>
+        <p>All four are context causes in b6's taxonomy, and none of them are fixed by expecting more from the person.</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ WORKED EXAMPLE 1 ============ -->
+  <section class="section" id="worked-1">
+    <div class="section-kicker">
+      <span class="klabel">Worked example 1 of 2</span>
+      <h2>Build a Cartwheel ramp for one real role <span class="tag demo">★ 12 min · everyone tries</span></h2>
+    </div>
+    <p class="lede">Take the merchandising-analyst role and write the 30/60/90 as observable milestones. Then check every line against one question: could someone who cannot do this job still tick it?</p>
+
+    <div class="steps">
+      <div class="step"><p>Write day 90 first. Independence is the destination, so define it before the route.</p></div>
+      <div class="step"><p>Work backwards to day 60 - contributing but reviewed - and day 30 - oriented, with one small real thing delivered.</p></div>
+      <div class="step"><p>Strike out any milestone that is an activity. "Attended", "read", "completed training" all go.</p></div>
+      <div class="step"><p>Name the teacher for each phase, by person. A ramp with no named teacher is a wish.</p></div>
+      <div class="step"><p>Add the week-one framing sentence about small feedback, and diarise the day-90 checkpoint now.</p></div>
+    </div>
+
+    <div class="callout tip">
+      <strong>Cartwheel merchandising analyst, ramped</strong>
+      <table class="clean">
+        <thead><tr><th>Milestone</th><th>Observable evidence</th><th>Teacher</th></tr></thead>
+        <tbody>
+          <tr><td>Day 30 · oriented</td><td>Has produced one weekly category report that went out unchanged after review</td><td>Senior analyst</td></tr>
+          <tr><td>Day 30 · oriented</td><td>Can explain how margin, sessions and conversion connect for our business</td><td>Manager, in the 1:1</td></tr>
+          <tr><td>Day 60 · contributing</td><td>Owns the weekly report end to end; review finds wording, not errors</td><td>Senior analyst</td></tr>
+          <tr><td>Day 60 · contributing</td><td>Has raised one problem nobody asked about</td><td>Manager</td></tr>
+          <tr><td>Day 90 · independent</td><td>Answers a buyer's ad-hoc question without escalating, and the answer holds up</td><td>None needed - that is the point</td></tr>
+          <tr><td>Day 90 · independent</td><td>Another analyst has asked them for help with something</td><td>-</td></tr>
+        </tbody>
+      </table>
+      Every row can be checked by a third party, which means the new person can check it themselves.
+    </div>
+  </section>
+
+  <!-- ============ WORKED EXAMPLE 2 ============ -->
+  <section class="section" id="worked-2">
+    <div class="section-kicker">
+      <span class="klabel">Worked example 2 of 2</span>
+      <h2>Write the week-three sentence <span class="tag demo">★ 8 min · do your own</span></h2>
+    </div>
+    <p class="lede">Pick something a current or recent joiner is doing that you have not mentioned. Write the version you would say in week three, and notice how much smaller it is than the version you would have to say in month nine.</p>
+
+    <div class="steps">
+      <div class="step"><p>Name the behaviour and the norm it misses. Norm, not judgment.</p></div>
+      <div class="step"><p>Say why it matters here, in one clause. Context makes a norm learnable rather than arbitrary.</p></div>
+      <div class="step"><p>Offer the mechanism, not just the instruction - the template, the channel, the person to ask.</p></div>
+      <div class="step"><p>Then compare it to the month-nine version of the same problem, and notice that the later one needs evidence, examples and probably a plan.</p></div>
+    </div>
+
+    <div class="callout example">
+      <span class="ex-pill">Real world</span>
+      <p><strong>Same issue, two prices.</strong> Week three: "One thing about how we work - if a report is going to slip, flag it the day before rather than the morning it is due, because the buyers build their orders around it. Easiest way is to drop a note in the team channel." Total cost: forty seconds, and it is heard as helpful. Month nine, the same issue, now habitual and having caused two missed buys: a prepared conversation, three dated examples, an agreed change, a follow-up, and a note on file in case it does not improve. The behaviour is identical. The eight months are the entire difference, and they were free to spend and expensive to have spent.</p>
+    </div>
+  </section>
+
+  <!-- ============ HOMEWORK ============ -->
+  <section class="section" id="exercise">
+    <div class="section-kicker">
+      <span class="klabel">Homework</span>
+      <h2>Try it yourself - this week <span class="tag exercise">◐ 30-45 min total</span></h2>
+    </div>
+    <ul>
+      <li>Write the 30/60/90 for one role on your team, as observable milestones, and name a teacher for each phase.</li>
+      <li>Test every milestone against "could someone who cannot do this job still tick it?" Strike the ones that fail.</li>
+      <li>Send the ramp document to your most recent joiner, even if they are past 90 days. It still helps them self-correct.</li>
+      <li>Say one week-three-sized thing to someone this week, whether or not they are new.</li>
+      <li>For anyone ramping slowly, check the four context causes before concluding anything about the person.</li>
+      <li>Diarise a real day-90 checkpoint for every current joiner.</li>
+    </ul>
+  </section>
+
+  <!-- ============ SOURCES ============ -->
+  <section class="section" id="official">
+    <div class="section-kicker">
+      <span class="klabel">Source material</span>
+      <h2>Sources covered (cited)</h2>
+    </div>
+    <p class="lede">Taught from the management-craft canon and ramp practice. This session covers:</p>
+    <div class="covered">
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">Grove, "High Output Management" - task-relevant maturity, and why it is per task rather than per person</span><span class="note">Part 1 · why a senior hire in a new context needs more ramp, not less</span></div>
+      <div class="covered-row"><span class="status pill light">◐</span><span class="name">Onboarding and ramp practice: observable milestones, named teachers, the day-90 checkpoint</span><span class="note">Parts 1-2 · the written bar and the free feedback window</span></div>
+      <div class="covered-row"><span class="status pill light">◐</span><span class="name">Review-language research on vague personality feedback - covered in learn OKRs with Phoebe</span><span class="note">Part 2 · why norms beat verdicts even in week three</span></div>
+    </div>
+  </section>
+
+  <!-- ============ QUIZ ============ -->
+  <section class="section" id="quiz">
+    <div class="section-kicker">
+      <span class="klabel">Check yourself</span>
+      <h2>Three questions before you go 🎯 <span class="tag exercise">◐ 90 seconds</span></h2>
+    </div>
+    <div class="quiz-q" data-answer="1">
+      <p class="qtext">1 · What is wrong with a ramp plan built from "meet the team, complete training, read the handbook"?</p>
+      <button class="qopt" type="button">A · Nothing, as long as it is completed on schedule</button>
+      <button class="qopt" type="button">B · Every item is completable by someone who will never be able to do the job - it measures attendance</button>
+      <button class="qopt" type="button">C · It should be spread over six months rather than three</button>
+      <p class="qwhy">Test every milestone with "could someone who cannot do this job still tick it?" Observable milestones - shipped one real thing, owns a recurring piece of work, answers a question without escalating - measure whether the person is becoming useful.</p>
+    </div>
+    <div class="quiz-q" data-answer="2">
+      <p class="qtext">2 · A senior hire with ten years in the same role joins from a larger competitor. What ramp do they need?</p>
+      <button class="qopt" type="button">A · Less than a graduate - they have done the job for a decade</button>
+      <button class="qopt" type="button">B · The same as everyone, for consistency</button>
+      <button class="qopt" type="button">C · Possibly more - task-relevant maturity is per task, and their systems, margins and relationships are all new</button>
+      <p class="qwhy">Seniority is maturity at a task, not a property of the person. A senior joiner in a new context has low maturity there, and is often too senior to admit they do not know how anything works - which is exactly how a four-month problem forms quietly.</p>
+    </div>
+    <div class="quiz-q" data-answer="0">
+      <p class="qtext">3 · Why is the same corrective sentence cheap in week three and expensive in month nine?</p>
+      <button class="qopt" type="button">A · Early on it is heard as onboarding; later it is heard as criticism, and later still as building a case</button>
+      <button class="qopt" type="button">B · Because habits are physically harder to change over time</button>
+      <button class="qopt" type="button">C · Because HR requires documentation after six months</button>
+      <p class="qwhy">Nothing about the sentence changes - only how long you waited. Name the frame in week one ("I will tell you small things as they come up") so every correction is a fulfilled promise, and keep it to how-things-work norms rather than verdicts.</p>
+    </div>
+    <p class="quiz-score"></p>
+  </section>
+
+  <!-- ============ CHEAT SHEET ============ -->
+  <section class="cheat" id="cheatsheet">
+    <h3>Manager session 2 cheat sheet <span>· pin this</span></h3>
+    <div class="grid-2">
+      <div class="cheat-item"><b>Write the bar first</b><span>most ramp failures are undocumented-expectation failures, not capability failures.</span></div>
+      <div class="cheat-item"><b>Observable, not activities</b><span>"could someone who cannot do the job still tick it?" If yes, rewrite it.</span></div>
+      <div class="cheat-item"><b>Write day 90 first</b><span>define independence, then work backwards to 60 and 30.</span></div>
+      <div class="cheat-item"><b>Name the teacher</b><span>a ramp with no named teacher is a wish.</span></div>
+      <div class="cheat-item"><b>Hand over the document</b><span>and the informal map of who actually knows what.</span></div>
+      <div class="cheat-item"><b>The free window</b><span>~12 weeks where correction is heard as onboarding. Name the frame in week one.</span></div>
+      <div class="cheat-item"><b>Seniority ≠ maturity</b><span>maturity is per task. A senior hire in a new context may need more ramp.</span></div>
+      <div class="cheat-item"><b>Next session</b><span>b3 - coaching, not fixing: GROW, and oversight matched to maturity.</span></div>
+    </div>
+  </section>
+
+  <footer class="pagefoot">
+    <span>Manager session 2 of 10 · learn-performance-management-with-phoebe · by Phoebe Fu &nbsp;·&nbsp; 📚 <a href="https://phoebefu6.github.io/learn-with-phoebe/">Learn with Phoebe ↗</a></span>
+    <span><a href="b1-foundations.html">← Prev: Foundations</a> &nbsp;·&nbsp; <a href="b3-coaching-not-fixing.html">Next: Coaching, not fixing →</a></span>
+  </footer>
+
+</main>
+
+<script src="../assets/app.js?v=1"></script>
+</body>
+</html>
