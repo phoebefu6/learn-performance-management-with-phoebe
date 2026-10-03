@@ -2,6 +2,7 @@
    Accent: pine #14532D · Ink: #1F2937 · Flagship: terracotta #C2410C */
 
 :root {
+  --clay-ink-text: #FFFFFF;
   --pine: #14532D;
   --pine-deep: #052E16;
   --pine-mid: #4E9F6E;
@@ -223,7 +224,7 @@ details.card .body h4:first-child { margin-top: 0; }
 .pill.solid { background: var(--pine); color: #fff; }
 .pill.light { background: var(--pine-50); color: var(--pine); }
 .pill.inkpill { background: var(--ink); color: #fff; }
-.pill.amber, .pill.peach { background: var(--clay); color: var(--clay-ink); }
+.pill.amber, .pill.peach { background: var(--clay); color: var(--clay-ink-text); }
 .pill.bare { color: var(--faint); }
 
 /* ---------- 4D grid ---------- */
@@ -281,7 +282,7 @@ table.clean td:first-child { font-weight: 600; }
   padding: .15rem .7rem;
 }
 .prompt-box.bad .label { background: var(--faint); color: var(--ink); }
-.prompt-box.good .label { background: var(--clay); color: var(--clay-ink); }
+.prompt-box.good .label { background: var(--clay); color: var(--clay-ink-text); }
 .copy-btn {
   position: absolute;
   top: .7rem;
@@ -298,7 +299,7 @@ table.clean td:first-child { font-weight: 600; }
   transition: background .15s ease;
 }
 .copy-btn:hover { background: rgba(255,255,255,.22); }
-.copy-btn.copied { background: var(--clay); border-color: var(--clay); color: var(--clay-ink); }
+.copy-btn.copied { background: var(--clay); border-color: var(--clay); color: var(--clay-ink-text); }
 
 /* ---------- demo steps ---------- */
 .steps { counter-reset: step; margin: .6rem 0 1rem; }
@@ -350,7 +351,7 @@ table.clean td:first-child { font-weight: 600; }
 .callout.example .ex-pill {
   display: inline-block;
   background: var(--clay);
-  color: var(--clay-ink);
+  color: var(--clay-ink-text);
   border-radius: 999px;
   padding: .15rem .7rem;
   font-size: .68rem;
